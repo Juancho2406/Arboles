@@ -36,6 +36,7 @@
             postOrdenToolStripMenuItem = new ToolStripMenuItem();
             volverAlMenuToolStripMenuItem = new ToolStripMenuItem();
             pictureBox1 = new PictureBox();
+            textBoxRecorrido = new TextBox();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -45,7 +46,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { graficaToolStripMenuItem, recorridosToolStripMenuItem, volverAlMenuToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(800, 24);
+            menuStrip1.Size = new Size(613, 24);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -68,18 +69,21 @@
             preOrdenToolStripMenuItem.Name = "preOrdenToolStripMenuItem";
             preOrdenToolStripMenuItem.Size = new Size(130, 22);
             preOrdenToolStripMenuItem.Text = "PreOrden";
+            preOrdenToolStripMenuItem.Click += btnPreorden_Click;
             // 
             // inOrdenToolStripMenuItem
             // 
             inOrdenToolStripMenuItem.Name = "inOrdenToolStripMenuItem";
             inOrdenToolStripMenuItem.Size = new Size(130, 22);
             inOrdenToolStripMenuItem.Text = "InOrden";
+            inOrdenToolStripMenuItem.Click += btnInorden_Click;
             // 
             // postOrdenToolStripMenuItem
             // 
             postOrdenToolStripMenuItem.Name = "postOrdenToolStripMenuItem";
             postOrdenToolStripMenuItem.Size = new Size(130, 22);
             postOrdenToolStripMenuItem.Text = "PostOrden";
+            postOrdenToolStripMenuItem.Click += btnPostorden_Click;
             // 
             // volverAlMenuToolStripMenuItem
             // 
@@ -93,15 +97,24 @@
             pictureBox1.Image = Properties.Resources.arbol;
             pictureBox1.Location = new Point(12, 41);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(561, 363);
+            pictureBox1.Size = new Size(553, 376);
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
+            // 
+            // textBoxRecorrido
+            // 
+            textBoxRecorrido.Enabled = false;
+            textBoxRecorrido.Location = new Point(27, 436);
+            textBoxRecorrido.Name = "textBoxRecorrido";
+            textBoxRecorrido.Size = new Size(487, 23);
+            textBoxRecorrido.TabIndex = 2;
             // 
             // Escenario1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(613, 492);
+            Controls.Add(textBoxRecorrido);
             Controls.Add(pictureBox1);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
@@ -124,5 +137,6 @@
         private ToolStripMenuItem postOrdenToolStripMenuItem;
         private ToolStripMenuItem volverAlMenuToolStripMenuItem;
         private PictureBox pictureBox1;
+        private TextBox textBoxRecorrido;
     }
 }

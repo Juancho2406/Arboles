@@ -33,34 +33,40 @@ namespace Arboles.Logic
             ImprimirArbol(raiz, "", true);
             return raiz;
         }
-        public static void RecorridoPreorden(Nodo nodo)
+        public static string RecorridoPreorden(Nodo nodo)
         {
-            if (nodo != null)
-            {
-                Console.Write($"{nodo.Valor} ");
-                RecorridoPreorden(nodo.Izquierdo);
-                RecorridoPreorden(nodo.Derecho);
-            }
+            if (nodo == null)
+                return "";
+
+            string resultado = $"{nodo.Valor} ";
+            resultado += RecorridoPreorden(nodo.Izquierdo);
+            resultado += RecorridoPreorden(nodo.Derecho);
+
+            return resultado;
         }
 
-        public static void RecorridoInorden(Nodo nodo)
+        public static string RecorridoInorden(Nodo nodo)
         {
-            if (nodo != null)
-            {
-                RecorridoInorden(nodo.Izquierdo);
-                Console.Write($"{nodo.Valor} ");
-                RecorridoInorden(nodo.Derecho);
-            }
+            if (nodo == null)
+                return "";
+
+            string resultado = RecorridoInorden(nodo.Izquierdo);
+            resultado += $"{nodo.Valor} ";
+            resultado += RecorridoInorden(nodo.Derecho);
+
+            return resultado;
         }
 
-        public static void RecorridoPostorden(Nodo nodo)
+        public static string RecorridoPostorden(Nodo nodo)
         {
-            if (nodo != null)
-            {
-                RecorridoPostorden(nodo.Izquierdo);
-                RecorridoPostorden(nodo.Derecho);
-                Console.Write($"{nodo.Valor} ");
-            }
+            if (nodo == null)
+                return "";
+
+            string resultado = RecorridoPostorden(nodo.Izquierdo);
+            resultado += RecorridoPostorden(nodo.Derecho);
+            resultado += $"{nodo.Valor} ";
+
+            return resultado;
         }
 
         static void ImprimirArbol(Nodo nodo, string prefijo, bool esIzquierdo)
