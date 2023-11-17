@@ -42,21 +42,21 @@ namespace Arboles
         private void btnPreorden_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Recorrido Preorden:");
-            String recorrido = TreeUtils.RecorridoPreorden(TreeUtils.contruirArbol());
+            String recorrido = TreeUtils.RecorridoPreorden(TreeUtils.contruirArbolEscenario1());
             textBoxRecorrido.Text = recorrido;
         }
 
         private void btnInorden_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Recorrido Inorden:");
-            String recorrido = TreeUtils.RecorridoInorden(TreeUtils.contruirArbol());
+            String recorrido = TreeUtils.RecorridoInorden(TreeUtils.contruirArbolEscenario1());
             textBoxRecorrido.Text = recorrido;
         }
 
         private void btnPostorden_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Recorrido Postorden:");
-            String recorrido = TreeUtils.RecorridoPostorden(TreeUtils.contruirArbol());
+            String recorrido = TreeUtils.RecorridoPostorden(TreeUtils.contruirArbolEscenario1());
             textBoxRecorrido.Text = recorrido;
         }
     }

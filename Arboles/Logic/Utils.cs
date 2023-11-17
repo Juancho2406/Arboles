@@ -8,7 +8,7 @@ namespace Arboles.Logic
 {
     public static class TreeUtils
     {
-        public static Nodo contruirArbol()
+        public static Nodo contruirArbolEscenario1()
         {
             // Construir el árbol
             Nodo raiz = new Nodo(70);
@@ -25,9 +25,9 @@ namespace Arboles.Logic
 
             raiz.Derecho.Izquierdo = new Nodo(77);
             raiz.Derecho.Izquierdo.Izquierdo = new Nodo(75);
-            raiz.Derecho.Izquierdo.Izquierdo.Izquierdo = new Nodo(78);
-            raiz.Derecho.Izquierdo.Izquierdo.Derecho = new Nodo(86);
             raiz.Derecho.Izquierdo.Derecho = new Nodo(91);
+            raiz.Derecho.Izquierdo.Derecho.Izquierdo = new Nodo(78);
+            raiz.Derecho.Izquierdo.Derecho.Izquierdo.Derecho = new Nodo(86);
 
             // Mostrar estructura del árbol
             ImprimirArbol(raiz, "", true);
@@ -69,7 +69,41 @@ namespace Arboles.Logic
             return resultado;
         }
 
-        static void ImprimirArbol(Nodo nodo, string prefijo, bool esIzquierdo)
+
+        public static Nodo ConstruirArbol(int[] preorden, int[] inorden)
+        {
+            private int preordenIndex; = 0;
+            return TreeUtils.ConstruirArbolRecursivo(preorden, inorden, 0, inorden.Length - 1);
+        }
+
+        public static Nodo ConstruirArbolRecursivo(int[] preorden, int[] inorden, int inordenInicio, int inordenFin)
+        {
+            if (inordenInicio > inordenFin)
+                return null;
+
+            Nodo nodoActual = new Nodo(preorden[preordenIndex++]);
+
+            if (inordenInicio == inordenFin)
+                return nodoActual;
+
+            int inordenIndex = BuscarIndiceInorden(inorden, inordenInicio, inordenFin, nodoActual.Valor);
+
+            nodoActual.Izquierdo = ConstruirArbolRecursivo(preorden, inorden, inordenInicio, inordenIndex - 1);
+            nodoActual.Derecho = ConstruirArbolRecursivo(preorden, inorden, inordenIndex + 1, inordenFin);
+
+            return nodoActual;
+        }
+
+        public static int BuscarIndiceInorden(int[] inorden, int inicio, int fin, int valor)
+        {
+            for (int i = inicio; i <= fin; i++)
+            {
+                if (inorden[i] == valor)
+                    return i;
+            }
+            return -1;
+        }
+        pulibc static void ImprimirArbol(Nodo nodo, string prefijo, bool esIzquierdo)
         {
             if (nodo != null)
             {
