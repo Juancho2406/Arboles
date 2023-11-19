@@ -30,7 +30,7 @@ namespace Arboles.Logic
             raiz.Derecho.Izquierdo.Derecho.Izquierdo.Derecho = new Nodo(86);
 
             // Mostrar estructura del árbol
-            ImprimirArbol(raiz, "", true);
+            TreeUtils.ImprimirArbol(raiz, "", true);
             return raiz;
         }
         public static string RecorridoPreorden(Nodo nodo)
@@ -69,15 +69,26 @@ namespace Arboles.Logic
             return resultado;
         }
 
+        public static void ImprimirArbol(Nodo nodo, string prefijo, bool esIzquierdo)
+        {
+            if (nodo != null)
+            {
+                Console.WriteLine(prefijo + (esIzquierdo ? "├── " : "└── ") + nodo.Valor);
+
+                ImprimirArbol(nodo.Izquierdo, prefijo + (esIzquierdo ? "│   " : "    "), true);
+                ImprimirArbol(nodo.Derecho, prefijo + (esIzquierdo ? "│   " : "    "), false);
+            }
+        }
+
 
         public static Nodo ConstruirArbol(int[] preorden, int[] inorden)
         {
-            private int preordenIndex; = 0;
-            return TreeUtils.ConstruirArbolRecursivo(preorden, inorden, 0, inorden.Length - 1);
+            return ConstruirArbolRecursivo(preorden, inorden, 0, inorden.Length - 1);
         }
 
         public static Nodo ConstruirArbolRecursivo(int[] preorden, int[] inorden, int inordenInicio, int inordenFin)
         {
+            int preordenIndex = 0;
             if (inordenInicio > inordenFin)
                 return null;
 
@@ -103,16 +114,5 @@ namespace Arboles.Logic
             }
             return -1;
         }
-        pulibc static void ImprimirArbol(Nodo nodo, string prefijo, bool esIzquierdo)
-        {
-            if (nodo != null)
-            {
-                Console.WriteLine(prefijo + (esIzquierdo ? "├── " : "└── ") + nodo.Valor);
-
-                ImprimirArbol(nodo.Izquierdo, prefijo + (esIzquierdo ? "│   " : "    "), true);
-                ImprimirArbol(nodo.Derecho, prefijo + (esIzquierdo ? "│   " : "    "), false);
-            }
-        }
     }
-
 }
