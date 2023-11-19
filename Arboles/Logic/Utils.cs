@@ -71,12 +71,13 @@ namespace Arboles.Logic
 
         public static void ImprimirArbol(Nodo nodo, string prefijo, bool esIzquierdo)
         {
+            StringBuilder sb = new StringBuilder();
+
             if (nodo != null)
             {
                 Console.WriteLine(prefijo + (esIzquierdo ? "├── " : "└── ") + nodo.Valor);
-
-                ImprimirArbol(nodo.Izquierdo, prefijo + (esIzquierdo ? "│   " : "    "), true);
-                ImprimirArbol(nodo.Derecho, prefijo + (esIzquierdo ? "│   " : "    "), false);
+                ImprimirArbol(nodo.Izquierdo, prefijo + "│  ", true);
+                ImprimirArbol(nodo.Derecho, prefijo + "  ", false);
             }
         }
 
@@ -114,5 +115,7 @@ namespace Arboles.Logic
             }
             return -1;
         }
+
+        
     }
 }
